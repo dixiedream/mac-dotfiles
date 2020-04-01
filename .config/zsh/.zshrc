@@ -1,0 +1,141 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="/home/ale/.config/.oh-my-zsh"
+
+ZSH_THEME="robbyrussell"
+
+plugins=(
+	git
+	docker
+	docker-compose
+	)
+
+source $ZSH/oh-my-zsh.sh
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Configs
+alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+alias zshconfig="$EDITOR ~/.config/zsh/.zshrc"
+
+# COMPOSER
+composer () {
+    tty=
+    tty -s && tty=--tty
+    docker run \
+        $tty \
+        --interactive \
+        --rm \
+        --user $(id -u):$(id -g) \
+        --volume /etc/passwd:/etc/passwd:ro \
+        --volume /etc/group:/etc/group:ro \
+        --volume $(pwd):/app \
+        composer "$@"
+}
+
+# DOCKER
+alias dc="docker-compose"
+d-exec () {
+    # Used for entering docker image bash
+    docker exec -it "$1" sh
+}
+dc-exec () {
+    # For entering docker-compose service bash
+    docker-compose exec "$1" sh
+}
+dc-exec-f () {
+    docker-compose -f "$1" exec -it "$2" sh
+}
+alias dc-build="docker-compose build"
+dc-build-f () {
+    docker-compose -f "$1" build "$2"
+}
+alias dc-reload="docker-compose down && docker-compose up"
+dc-reload-f () {
+    docker-compose -f "$1" down && docker-compose -f "$1" up
+}
+alias dc-reload-d="docker-compose down && docker-compose up -d"
+dc-reload-d-f(){
+    docker-compose -f "$1" down && docker-compose -f "$1" up -d
+}
+alias dc-down="docker-compose down"
+alias dc-up="docker-compose up"
+alias dc-clean="docker system prune --all"
+alias dc-clean-all="docker system prune --all --volumes"
+alias docker-bench-security="docker run -it --net host --pid host --userns host --cap-add audit_control \
+    -e DOCKER_CONTENT_TRUST=$DOCKER_CONTENT_TRUST \
+    -v /var/lib:/var/lib \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /usr/lib/systemd:/usr/lib/systemd \
+    -v /etc:/etc --label docker_bench_security \
+    docker/docker-bench-security"
+
+#GIT
+alias commit="git commit -am"
+alias pushu="git push -u origin"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+#MONGOSHELL
+mongorestore() {
+  docker run \
+    --rm \
+    -v $PWD:/app \
+    -w /app \
+    -u mongodb \
+    mongo \
+    mongorestore "$@"
+}
+mongodump() {
+  docker run \
+    --rm \
+    -v $PWD:/app \
+    -w /app \
+    -u mongodb \
+    mongo \
+    mongodump "$@"
+}
+
+#NGROK es. ngrok web_service_container
+ngrok() {
+  docker run --rm -it --link "$1":http wernight/ngrok ngrok http http:80
+}
+
+# Download .m3u8 video streams
+# https://stackoverflow.com/questions/32528595/ffmpeg-mp4-from-http-live-streaming-m3u8-file
+streamDownload() {
+    ffmpeg -i "$1" -c copy -bsf:a aac_adtstoasc movie.mp4
+}
+
+# Keypad
+# 0 . Enter
+bindkey -s "^[Op" "0"
+bindkey -s "^[On" "."
+bindkey -s "^[OM" "^M"
+# 1 2 3
+bindkey -s "^[Oq" "1"
+bindkey -s "^[Or" "2"
+bindkey -s "^[Os" "3"
+# 4 5 6
+bindkey -s "^[Ot" "4"
+bindkey -s "^[Ou" "5"
+bindkey -s "^[Ov" "6"
+# 7 8 9
+bindkey -s "^[Ow" "7"
+bindkey -s "^[Ox" "8"
+bindkey -s "^[Oy" "9"
+# + -  * / =
+bindkey -s "^[Ok" "+"
+bindkey -s "^[Om" "-"
+bindkey -s "^[Oj" "*"
+bindkey -s "^[Oo" "/"
+bindkey -s "^[OX" "="
