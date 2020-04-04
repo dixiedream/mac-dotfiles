@@ -44,34 +44,13 @@ composer () {
 }
 
 # DOCKER
+alias dockeron="sudo systemctl start docker"
+alias dockeroff="sudo systemctl stop docker"
 alias dc="docker-compose"
 d-exec () {
     # Used for entering docker image bash
     docker exec -it "$1" sh
 }
-dc-exec () {
-    # For entering docker-compose service bash
-    docker-compose exec "$1" sh
-}
-dc-exec-f () {
-    docker-compose -f "$1" exec -it "$2" sh
-}
-alias dc-build="docker-compose build"
-dc-build-f () {
-    docker-compose -f "$1" build "$2"
-}
-alias dc-reload="docker-compose down && docker-compose up"
-dc-reload-f () {
-    docker-compose -f "$1" down && docker-compose -f "$1" up
-}
-alias dc-reload-d="docker-compose down && docker-compose up -d"
-dc-reload-d-f(){
-    docker-compose -f "$1" down && docker-compose -f "$1" up -d
-}
-alias dc-down="docker-compose down"
-alias dc-up="docker-compose up"
-alias dc-clean="docker system prune --all"
-alias dc-clean-all="docker system prune --all --volumes"
 alias docker-bench-security="docker run -it --net host --pid host --userns host --cap-add audit_control \
     -e DOCKER_CONTENT_TRUST=$DOCKER_CONTENT_TRUST \
     -v /var/lib:/var/lib \
