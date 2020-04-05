@@ -11,3 +11,25 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 export ZDOTDIR="$HOME/.config/zsh"
+
+#
+# ~/.profile
+#
+export EDITOR="vim"
+export TERMINAL="st"
+export BROWSER="google-chrome-stable"
+export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
+
+
+# ~/ Clean-up:
+export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
+export LESSHISTFILE="-"
+export WGETRC="$HOME/.config/wget/wgetrc"
+export INPUTRC="$HOME/.config/inputrc"
+export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+
+# Start X if not
+# Start graphical server on tty1 if not already running.
+#[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg >/dev/null && exec startx
