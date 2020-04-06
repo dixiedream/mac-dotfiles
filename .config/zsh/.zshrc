@@ -95,6 +95,9 @@ streamDownload() {
     ffmpeg -i "$1" -c copy -bsf:a aac_adtstoasc movie.mp4
 }
 
+# NeoVim alias
+alias vim="nvim"
+
 # Keypad
 # 0 . Enter
 bindkey -s "^[Op" "0"

@@ -15,11 +15,11 @@ export ZDOTDIR="$HOME/.config/zsh"
 #
 # ~/.profile
 #
-export EDITOR="vim"
+export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="google-chrome-stable"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
-
+export HI_DPI=1
 
 # ~/ Clean-up:
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
@@ -32,4 +32,7 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=0
 
 # Start X if not
 # Start graphical server on tty1 if not already running.
-#[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg >/dev/null && exec startx
+[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg >/dev/null && exec startx
+[ "$(tty)" = "/dev/tty2" ] && ! pgrep -x Xorg >/dev/null && exec startx ~/.xinitrc xfce
+#[ "$(tty)" = "/dev/tty1" ] && export DE="awesome"
+#[ "$(tty)" = "/dev/tty2" ] && export DE="xfce"
