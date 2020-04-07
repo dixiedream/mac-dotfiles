@@ -73,7 +73,7 @@ local terminal = os.getenv("TERMINAL") or "st"
 local vi_focus = false -- vi-like client focus - https://github.com/lcpz/awesome-copycats/issues/275
 local cycle_prev = true -- cycle trough all previous client or just the first -- https://github.com/lcpz/awesome-copycats/issues/274
 local font = "monospace"
-local editor = os.getenv("EDITOR") or "vim"
+local editor = os.getenv("EDITOR") or "nvim"
 local browser = os.getenv("BROWSER") or "firefox"
 local filemanager = terminal .. " -e ranger"
 local scrlocker = "slock"
@@ -83,26 +83,6 @@ awful.util.tagnames = {"1", "2", "3", "4", "5"}
 awful.layout.layouts = {
     awful.layout.suit.tile,
     awful.layout.suit.floating
-    --awful.layout.suit.tile.left,
-    --awful.layout.suit.tile.bottom,
-    --awful.layout.suit.tile.top,
-    --awful.layout.suit.fair,
-    --awful.layout.suit.fair.horizontal,
-    --awful.layout.suit.spiral,
-    --awful.layout.suit.spiral.dwindle,
-    --awful.layout.suit.max,
-    --awful.layout.suit.max.fullscreen,
-    --awful.layout.suit.magnifier,
-    --awful.layout.suit.corner.nw,
-    --awful.layout.suit.corner.ne,
-    --awful.layout.suit.corner.sw,
-    --awful.layout.suit.corner.se,
-    --lain.layout.cascade,
-    --lain.layout.cascade.tile,
-    --lain.layout.centerwork,
-    --lain.layout.centerwork.horizontal,
-    --lain.layout.termfair,
-    --lain.layout.termfair.center,
 }
 
 awful.util.taglist_buttons =
@@ -206,16 +186,6 @@ awful.util.tasklist_buttons =
     )
 )
 
--- lain.layout.termfair.nmaster           = 3
--- lain.layout.termfair.ncol              = 1
--- lain.layout.termfair.center.nmaster    = 3
--- lain.layout.termfair.center.ncol       = 1
--- lain.layout.cascade.tile.offset_x      = dpi(2)
--- lain.layout.cascade.tile.offset_y      = dpi(32)
--- lain.layout.cascade.tile.extra_padding = dpi(5)
--- lain.layout.cascade.tile.nmaster       = 5
--- lain.layout.cascade.tile.ncol          = 2
-
 beautiful.init(string.format("%s/.config/awesome/theme.lua", os.getenv("HOME")))
 -- }}}
 
@@ -224,9 +194,7 @@ beautiful.init(string.format("%s/.config/awesome/theme.lua", os.getenv("HOME")))
 screen.connect_signal(
     "property::geometry",
     function(s)
-        os.execute(
-            string.format("setbg %s", os.getenv("WALLPAPER_DIR"))
-        )
+        os.execute("setbg")
     end
 )
 --
@@ -271,23 +239,6 @@ globalkeys =
     awful.key({modkey}, "Left", awful.tag.viewprev, {description = "view previous", group = "tag"}),
     awful.key({modkey}, "Right", awful.tag.viewnext, {description = "view next", group = "tag"}),
     awful.key({modkey}, "Escape", awful.tag.history.restore, {description = "go back", group = "tag"}),
-    -- Non-empty tag browsing
-    awful.key(
-        {altkey},
-        "Left",
-        function()
-            lain.util.tag_view_nonempty(-1)
-        end,
-        {description = "view  previous nonempty", group = "tag"}
-    ),
-    awful.key(
-        {altkey},
-        "Right",
-        function()
-            lain.util.tag_view_nonempty(1)
-        end,
-        {description = "view  previous nonempty", group = "tag"}
-    ),
     -- Default client focus
     awful.key(
         {modkey, "Control"},

@@ -10,7 +10,6 @@ sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
 SESSION=${1:-awesome}
-#SESSION=${DE:-awesome}
 
 # merge in defaults and keymaps
 

@@ -1,4 +1,5 @@
-!! For Awesome, Xfce use GDM structure
+!! Transparency (0-1):
+*.alpha: 0.9
 
 Xft.dpi: 192
 
@@ -14,8 +15,8 @@ Xft.rgba: rgb
 !! Set a default font and font size
 *.font: monospace:size=10:dpi=192
 
-*.font: monospace:size=10
 ! Colors
+dmenu.selbackground: #61AFEF
 
 ! OneDark
 ! special
