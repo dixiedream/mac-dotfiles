@@ -16,7 +16,6 @@ Xft.rgba: rgb
 *.font: monospace:size=10:dpi=192
 
 ! Colors
-dmenu.selbackground: #61AFEF
 
 ! OneDark
 ! special

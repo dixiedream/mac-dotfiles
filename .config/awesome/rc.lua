@@ -464,16 +464,7 @@ globalkeys =
         {modkey},
         "d",
         function()
-            os.execute(
-                string.format(
-                    "dmenu_run -i -fn '%s-10' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
-                    font,
-                    beautiful.bg_normal,
-                    beautiful.fg_normal,
-                    beautiful.bg_focus,
-                    beautiful.fg_focus
-                )
-            )
+            os.execute('dmenu_run -i')
         end,
         {description = "show dmenu", group = "launcher"}
     )

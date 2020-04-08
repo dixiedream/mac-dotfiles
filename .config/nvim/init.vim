@@ -8,6 +8,7 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'itchyny/lightline.vim'
+Plug 'ap/vim-css-color'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
