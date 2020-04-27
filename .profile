@@ -1,4 +1,4 @@
-# Runs at login
+Runs at login
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -30,6 +30,6 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 
 # Start X if not
-# Start graphical server on tty1 if not already running.
+# Start graphical server if not already running.
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg >/dev/null && exec startx
 [ "$(tty)" = "/dev/tty2" ] && ! pgrep -x Xorg >/dev/null && exec startx ~/.xinitrc xfce
