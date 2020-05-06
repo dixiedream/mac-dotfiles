@@ -5,6 +5,7 @@ image/jpeg=sxiv.desktop
 x-scheme-handler/http=google-chrome.desktop
 x-scheme-handler/https=google-chrome.desktop
 x-scheme-handler/discord-455712169795780630=discord-455712169795780630.desktop
+x-scheme-handler/postman=Postman.desktop
 
 [Added Associations]
 image/png=sxiv.desktop;
@@ -12,3 +13,4 @@ image/jpg=sxiv.desktop;
 image/jpeg=sxiv.desktop;
 inode/directory=ranger.desktop;exo-file-manager.desktop;
 x-scheme-handler/trash=exo-file-manager.desktop;
+application/pdf=org.pwmt.zathura-pdf-poppler.desktop;
