@@ -52,7 +52,11 @@ local function menu()
       local cmd = "xrandr"
       -- Enabled outputs
       for i, o in pairs(choice) do
-         cmd = cmd .. " --output " .. o .. " --auto"
+          if o == "HDMI1" then
+              cmd = cmd .. " --output " .. o .. " --scale 2x2"
+            else
+                cmd = cmd .. " --output " .. o .. " --auto"
+            end
          if i > 1 then
             cmd = cmd .. " --right-of " .. choice[i-1]
          end

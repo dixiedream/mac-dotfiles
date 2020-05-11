@@ -4,8 +4,6 @@ acpid
 alsa-firmware
 alsa-utils
 apparmor
-arandr
-arc-gtk-theme
 aspell-en
 atool
 autoconf
@@ -275,8 +273,10 @@ xorg-twm
 xorg-xbacklight
 xorg-xinit
 xorg-xkill
+xsel
 xwallpaper
 yay
+youtube-dl
 zathura
 zathura-pdf-poppler
 zensu

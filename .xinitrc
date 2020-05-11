@@ -39,6 +39,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 case "$SESSION" in
-	xfce) exec setbg & dbus-launch --sh-syntax --exit-with-session xfce4-session ;;
+    xfce) exec setbg & startxfce4 ;;
 	awesome) exec setbg & awesome ;;
 esac
