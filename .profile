@@ -27,7 +27,7 @@ export WGETRC="$HOME/.config/wget/wgetrc"
 export INPUTRC="$HOME/.config/inputrc"
 export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
 export QT_QPA_PLATFORMTHEME="qt5ct"
-export QT_AUTO_SCREEN_SCALE_FACTOR=0
+#export QT_AUTO_SCREEN_SCALE_FACTOR=0
 
 # Start X if not
 # Start graphical server if not already running.

@@ -39,6 +39,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 case "$SESSION" in
-    xfce) exec setbg & startxfce4 ;;
-	awesome) exec setbg & awesome ;;
+    xfce) exec startxfce4 ;;
+	awesome) exec awesome ;;
 esac

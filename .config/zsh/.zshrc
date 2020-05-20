@@ -26,6 +26,10 @@ export LANG=en_US.UTF-8
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias zshconfig="$EDITOR ~/.config/zsh/.zshrc"
 
+# Listing
+alias ll="ls -lh"
+
+
 # COMPOSER
 composer () {
     tty=
@@ -68,7 +72,7 @@ mongorestore() {
     --rm \
     -v $PWD:/app \
     -w /app \
-    -u mongodb \
+    -u $(id -u):$(id -g) \
     mongo \
     mongorestore "$@"
 }
@@ -77,10 +81,29 @@ mongodump() {
     --rm \
     -v $PWD:/app \
     -w /app \
-    -u mongodb \
+    -u $(id -u):$(id -g) \
     mongo \
     mongodump "$@"
 }
+mongoimport() {
+  docker run \
+      --rm \
+      -v $PWD:/app \
+      -w /app \
+      -u $(id -u):$(id -g) \
+      mongo \
+      mongoimport "$@"
+}
+mongoexport() {
+  docker run \
+      --rm \
+      -v $PWD:/app \
+      -w /app \
+      -u $(id -u):$(id -g) \
+      mongo \
+      mongoexport "$@"
+}
+
 
 #NGROK es. ngrok web_service_container
 ngrok() {
