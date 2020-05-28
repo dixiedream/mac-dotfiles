@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# create dir for git bare repo
+git init --bare $HOME/.cfg
+
+# create alias - use "dots" instead of "git" to interact
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+# set flag to hide not explicitly tracked files
+config config --local status.showUntrackedFiles no

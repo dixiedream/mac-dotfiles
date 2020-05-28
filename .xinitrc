@@ -9,7 +9,7 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-SESSION=${1:-awesome}
+SESSION=${1:-xfce}
 
 # merge in defaults and keymaps
 
@@ -40,5 +40,5 @@ fi
 
 case "$SESSION" in
     xfce) exec startxfce4 ;;
-	awesome) exec awesome ;;
+    dwm) exec setbg & dwmstatbar & xfce4-power-manager & dwm ;;
 esac

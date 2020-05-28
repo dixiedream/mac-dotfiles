@@ -1,0 +1,15 @@
+#!/bin/sh
+
+
+essid=$(nmcli | grep -v "disconnected" | grep "connected" | awk '{print $4}')
+wstatus=$(nmcli | grep -v "disconnected" | grep connected | awk '{print $2}')
+
+if [ "$wstatus" = "connected" ]
+then
+  icon=""
+else
+  icon=""
+  essid="disconnected"
+fi
+
+printf "%s\n" "^c#2e3440^^b#bf616a^ $icon ^c#bf616a^^b#2e3440^ $essid ^d^"
