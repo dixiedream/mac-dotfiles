@@ -121,8 +121,6 @@ manjaro-hotfixes
 manjaro-printer
 manjaro-pulse
 manjaro-release
-manjaro-settings-manager
-manjaro-settings-manager-notifier
 manjaro-system
 manjaro-xfce-settings
 matcha-gtk-theme
@@ -204,6 +202,7 @@ transmission-gtk
 ttf-bitstream-vera
 ttf-droid
 ttf-font-awesome
+ttf-hack
 ttf-indic-otf
 ttf-liberation
 tumbler

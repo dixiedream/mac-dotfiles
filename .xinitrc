@@ -40,5 +40,4 @@ fi
 
 case "$SESSION" in
     xfce) exec startxfce4 ;;
-    dwm) exec setbg & dwmstatbar & xfce4-power-manager & dwm ;;
 esac

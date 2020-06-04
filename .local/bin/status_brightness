@@ -3,4 +3,4 @@
 bri=$(xbacklight -get | sed 's/\..*//g')
 icon=""
 
-printf "%s%% \n" "^c#2e3440^^b#88c0d0^ $icon ^c#88c0d0^^b#2e3440^ $bri"
+printf "%s%% \n" "^c#2e3440^^b#88c0d0^ $icon ^c#88c0d0^^b#2e3440^ $bri^d^"

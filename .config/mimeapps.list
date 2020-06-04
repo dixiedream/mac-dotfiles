@@ -3,9 +3,15 @@ image/png=sxiv.desktop
 image/jpg=sxiv.desktop
 image/jpeg=sxiv.desktop
 x-scheme-handler/postman=Postman.desktop
+image/webp=google-chrome.desktop
+application/x-mozilla-bookmarks=google-chrome.desktop
+text/html=google-chrome.desktop
 
 [Added Associations]
 image/png=sxiv.desktop;
 image/jpg=sxiv.desktop;
 image/jpeg=sxiv.desktop;
 application/pdf=org.pwmt.zathura-pdf-poppler.desktop;
+image/webp=google-chrome.desktop;
+application/x-mozilla-bookmarks=google-chrome.desktop;
+text/html=google-chrome.desktop;

@@ -6,8 +6,8 @@
     <property name="eDP1" type="string" value="Laptop">
       <property name="Active" type="bool" value="true"/>
       <property name="EDID" type="string" value="192577bfc06cec17eb708d1ed9111c58a9e7c793"/>
-      <property name="Resolution" type="string" value="1600x900"/>
-      <property name="RefreshRate" type="double" value="59.999617"/>
+      <property name="Resolution" type="string" value="3200x1800"/>
+      <property name="RefreshRate" type="double" value="59.696085"/>
       <property name="Rotation" type="int" value="0"/>
       <property name="Reflection" type="string" value="0"/>
       <property name="Primary" type="bool" value="false"/>
@@ -25,22 +25,7 @@
       <property name="Reflection" type="string" value="0"/>
       <property name="Primary" type="bool" value="true"/>
       <property name="Position" type="empty">
-        <property name="X" type="int" value="1600"/>
-        <property name="Y" type="int" value="0"/>
-      </property>
-    </property>
-  </property>
-  <property name="ed91cd89f3c81b3fc8af5ae2c32334b0371765d8" type="string" value="Laptop">
-    <property name="eDP1" type="string" value="Laptop">
-      <property name="Active" type="bool" value="true"/>
-      <property name="EDID" type="string" value="192577bfc06cec17eb708d1ed9111c58a9e7c793"/>
-      <property name="Resolution" type="string" value="3200x1800"/>
-      <property name="RefreshRate" type="double" value="59.696085"/>
-      <property name="Rotation" type="int" value="0"/>
-      <property name="Reflection" type="string" value="0"/>
-      <property name="Primary" type="bool" value="false"/>
-      <property name="Position" type="empty">
-        <property name="X" type="int" value="0"/>
+        <property name="X" type="int" value="3200"/>
         <property name="Y" type="int" value="0"/>
       </property>
     </property>
@@ -77,8 +62,8 @@
     <property name="eDP1" type="string" value="Laptop">
       <property name="Active" type="bool" value="true"/>
       <property name="EDID" type="string" value="192577bfc06cec17eb708d1ed9111c58a9e7c793"/>
-      <property name="Resolution" type="string" value="1600x900"/>
-      <property name="RefreshRate" type="double" value="59.999617"/>
+      <property name="Resolution" type="string" value="3200x1800"/>
+      <property name="RefreshRate" type="double" value="59.696085"/>
       <property name="Rotation" type="int" value="0"/>
       <property name="Reflection" type="string" value="0"/>
       <property name="Primary" type="bool" value="false"/>
@@ -94,11 +79,13 @@
       <property name="RefreshRate" type="double" value="60.000000"/>
       <property name="Rotation" type="int" value="0"/>
       <property name="Reflection" type="string" value="0"/>
-      <property name="Primary" type="bool" value="true"/>
+      <property name="Primary" type="bool" value="false"/>
       <property name="Position" type="empty">
-        <property name="X" type="int" value="1600"/>
+        <property name="X" type="int" value="3200"/>
         <property name="Y" type="int" value="0"/>
       </property>
     </property>
   </property>
+  <property name="IdentityPopups" type="bool" value="false"/>
+  <property name="Notify" type="bool" value="false"/>
 </channel>

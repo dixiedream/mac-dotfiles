@@ -30,11 +30,11 @@
         <property name="startup-notify" type="bool" value="true"/>
       </property>
       <property name="override" type="bool" value="true"/>
-      <property name="&lt;Super&gt;p" type="string" value="xfce4-display-settings --minimal"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;q" type="string" value="xfce4-session-logout"/>
       <property name="AudioMute" type="string" value="amixer set Master toggle"/>
       <property name="AudioRaiseVolume" type="string" value="amixer set Master 5%+"/>
       <property name="AudioLowerVolume" type="string" value="amixer set Master 5%-"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="st"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

@@ -27,7 +27,7 @@ screens() {
 }
 
 update() {
-    xsetroot -name "$(screens) $(bri) $(vol) $(bat) $(ctime) $(net)" &
+    xsetroot -name "$(screens) $(bri) $(vol) $(bat) $(ctime) $(net) " &
     wait
 }
 
