@@ -17,7 +17,7 @@ export ZDOTDIR="$HOME/.config/zsh"
 #
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="google-chrome-stable"
+export BROWSER="firefox"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 
 # ~/ Clean-up:

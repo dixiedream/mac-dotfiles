@@ -45,6 +45,7 @@ ffmpegthumbnailer
 file
 filesystem
 findutils
+firefox
 flex
 freetype2
 garcon
@@ -193,7 +194,6 @@ sysfsutils
 systemd-fsck-silent
 systemd-sysvcompat
 tar
-terminus-font
 texinfo
 thunderbird
 thunderbird-i18n-en-us
@@ -222,7 +222,6 @@ which
 wpa_supplicant
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
-xdg-su
 xdg-user-dirs
 xdg-utils
 xf86-input-elographics
