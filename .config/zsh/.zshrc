@@ -4,7 +4,7 @@
 export ZSH="$HOME/.config/oh-my-zsh"
 
 plugins=(
-	git
+	#git
 	docker
 	docker-compose
 	)
@@ -104,11 +104,6 @@ mongoexport() {
       mongoexport "$@"
 }
 
-
-#NGROK es. ngrok web_service_container
-ngrok() {
-  docker run --rm -it --link "$1":http wernight/ngrok ngrok http http:80
-}
 
 # Download .m3u8 video streams
 # https://stackoverflow.com/questions/32528595/ffmpeg-mp4-from-http-live-streaming-m3u8-file

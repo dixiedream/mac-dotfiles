@@ -25,7 +25,3 @@ export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
 export WGETRC="$HOME/.config/wget/wgetrc"
 export INPUTRC="$HOME/.config/inputrc"
-
-# Start X if not
-# Start graphical server if not already running.
-[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg >/dev/null && exec startx
