@@ -1,139 +1,41 @@
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Enable colors and change prompt:
+autoload -U colors && colors	# Load colors
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.config/oh-my-zsh"
-
-plugins=(
-	#git
-	docker
-	docker-compose
-	)
-
-source "$ZSH/oh-my-zsh.sh"
-
-PROMPT="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b"
-PROMPT+=' $(git_prompt_info)'
-
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}(%{$fg[red]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
-
-# Configs
-alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
-alias zshconfig="$EDITOR ~/.config/zsh/.zshrc"
-
-# Listing
-alias ll="ls -lh"
-
-
-# COMPOSER
-composer () {
-    tty=
-    tty -s && tty=--tty
-    docker run \
-        $tty \
-        --interactive \
-        --rm \
-        --user $(id -u):$(id -g) \
-        --volume /etc/passwd:/etc/passwd:ro \
-        --volume /etc/group:/etc/group:ro \
-        --volume $(pwd):/app \
-        composer "$@"
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
-# DOCKER
-alias dockeron="sudo systemctl start docker"
-alias dockeroff="sudo systemctl stop docker"
-alias dc="docker-compose"
-d-exec () {
-    # Used for entering docker image bash
-    docker exec -it "$1" sh
-}
-alias docker-bench-security="docker run -it --net host --pid host --userns host --cap-add audit_control \
-    -e DOCKER_CONTENT_TRUST=$DOCKER_CONTENT_TRUST \
-    -v /var/lib:/var/lib \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    -v /usr/lib/systemd:/usr/lib/systemd \
-    -v /etc:/etc --label docker_bench_security \
-    docker/docker-bench-security"
-
-#GIT
-alias commit="git commit -am"
-alias pushu="git push -u origin"
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-
-#MONGOSHELL
-mongorestore() {
-  docker run \
-    --rm \
-    -v $PWD:/app \
-    -w /app \
-    -u $(id -u):$(id -g) \
-    mongo \
-    mongorestore "$@"
-}
-mongodump() {
-  docker run \
-    --rm \
-    -v $PWD:/app \
-    -w /app \
-    -u $(id -u):$(id -g) \
-    mongo \
-    mongodump "$@"
-}
-mongoimport() {
-  docker run \
-      --rm \
-      -v $PWD:/app \
-      -w /app \
-      -u $(id -u):$(id -g) \
-      mongo \
-      mongoimport "$@"
-}
-mongoexport() {
-  docker run \
-      --rm \
-      -v $PWD:/app \
-      -w /app \
-      -u $(id -u):$(id -g) \
-      mongo \
-      mongoexport "$@"
+function precmd {
+    PROMPT="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$fg[green]%}$(parse_git_branch)%{$reset_color%}$ "
 }
 
+setopt autocd		# Automatically cd into typed directory.
+stty stop undef		# Disable ctrl-s to freeze terminal.
 
-# Download .m3u8 video streams
-# https://stackoverflow.com/questions/32528595/ffmpeg-mp4-from-http-live-streaming-m3u8-file
-streamDownload() {
-    ffmpeg -i "$1" -c copy -bsf:a aac_adtstoasc movie.mp4
+# History in cache directory:
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.cache/zsh/history
+
+# Load aliases and shortcuts if existent.
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/aliases" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/aliases"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/localAliases" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/localAliases"
+
+# Basic auto/tab complete:
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)		# Include hidden files.
+
+# vi mode
+export KEYTIMEOUT=1
+
+_fix_cursor() {
+   echo -ne '\e[1 q'
 }
+precmd_functions+=(_fix_cursor)
 
-# NeoVim alias
-alias vim="nvim"
+# Load syntax highlighting; should be last.
+#source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 
-# Keypad
-# 0 . Enter
-bindkey -s "^[Op" "0"
-bindkey -s "^[On" "."
-bindkey -s "^[OM" "^M"
-# 1 2 3
-bindkey -s "^[Oq" "1"
-bindkey -s "^[Or" "2"
-bindkey -s "^[Os" "3"
-# 4 5 6
-bindkey -s "^[Ot" "4"
-bindkey -s "^[Ou" "5"
-bindkey -s "^[Ov" "6"
-# 7 8 9
-bindkey -s "^[Ow" "7"
-bindkey -s "^[Ox" "8"
-bindkey -s "^[Oy" "9"
-# + -  * / =
-bindkey -s "^[Ok" "+"
-bindkey -s "^[Om" "-"
-bindkey -s "^[Oj" "*"
-bindkey -s "^[Oo" "/"
-bindkey -s "^[OX" "="

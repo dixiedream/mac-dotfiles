@@ -5,10 +5,9 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
+# Adds `~/.local/bin` to $PATH
+export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')"
+
 
 export ZDOTDIR="$HOME/.config/zsh"
 
@@ -18,10 +17,8 @@ export ZDOTDIR="$HOME/.config/zsh"
 export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="firefox"
-export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 
 # ~/ Clean-up:
-export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
 export WGETRC="$HOME/.config/wget/wgetrc"
 export INPUTRC="$HOME/.config/inputrc"

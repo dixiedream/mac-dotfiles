@@ -8,7 +8,7 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'itchyny/lightline.vim'
-Plug 'chrisbra/colorizer'
+Plug 'ap/vim-css-color'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -97,4 +97,3 @@ set guioptions-=L  "remove left-hand scroll bar
 " => Removes pipes | that act as seperators on splits
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set fillchars+=vert:\ 
-
